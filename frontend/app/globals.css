@@ -1,21 +1,473 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+    :root {
+        --radius: 0.5rem;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@layer utilities {
+    .form-btn {
+        @apply bg-primary text-black-100 hover:bg-primary inline-flex min-h-14 w-full items-center justify-center rounded-md px-6 py-2 font-bold text-base !important;
+    }
+
+    .form-input {
+        @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-dark-100 placeholder:text-dark-400   bg-transparent shadow-md !important;
+    }
+
+    /* Book Card */
+    .book-title {
+        @apply mt-2 line-clamp-1 text-base font-semibold text-white xs:text-xl;
+    }
+
+    .book-genre {
+        @apply mt-1 line-clamp-1 text-sm italic text-light-100 xs:text-base;
+    }
+
+    .book-loaned {
+        @apply flex flex-row items-center gap-1 max-xs:justify-center;
+    }
+
+    .book-btn {
+        @apply bg-dark-600 mt-3 min-h-14 w-full font-bebas-neue text-base text-primary;
+    }
+
+    /* Borrowed Book */
+    .borrowed-book {
+        @apply gradient-vertical p-5 rounded-2xl xs:w-min w-full relative;
+    }
+
+    .borrowed-book_cover {
+        @apply py-4 lg:px-16 px-10 flex justify-center items-center w-full rounded-lg;
+    }
+
+    /* Book Cover */
+    .book-cover_extra_small {
+        @apply w-[28.95px] h-10;
+    }
+
+    .book-cover_small {
+        @apply w-[55px] h-[76px];
+    }
+
+    .book-cover_medium {
+        @apply w-[144px] h-[199px];
+    }
+
+    .book-cover_regular {
+        @apply xs:w-[174px] w-[114px] xs:h-[239px] h-[169px];
+    }
+
+    .book-cover_wide {
+        @apply xs:w-[296px] w-[256px] xs:h-[404px] h-[354px];
+    }
+
+    /* Book List */
+    .book-list {
+        @apply mt-10 flex flex-wrap gap-5 max-xs:justify-between xs:gap-10;
+    }
+
+    /* Book Overview */
+    .book-overview {
+        @apply flex flex-col-reverse items-center gap-12 sm:gap-32 xl:flex-row xl:gap-8;
+    }
+
+    .book-overview h1 {
+        @apply text-5xl font-semibold text-white md:text-7xl;
+    }
+
+    .book-info {
+        @apply mt-7 flex flex-row flex-wrap gap-4 text-xl text-light-100;
+    }
+
+    .book-copies {
+        @apply flex flex-row flex-wrap gap-4 mt-1;
+    }
+
+    .book-copies p {
+        @apply text-xl text-light-100;
+    }
+
+    .book-copies p span {
+        @apply ml-2 font-semibold text-primary;
+    }
+
+    .book-description {
+        @apply mt-2 text-justify text-xl text-light-100;
+    }
+
+    .book-overview_btn {
+        @apply mt-4 min-h-14 w-fit bg-primary text-black-100 hover:bg-primary/90 max-md:w-full !important;
+    }
+
+    /* File Upload */
+    .upload-btn {
+        @apply flex min-h-14 w-full items-center justify-center gap-1.5 rounded-md;
+    }
+
+    .upload-filename {
+        @apply mt-1 text-center text-xs;
+    }
+
+    .progress {
+        @apply rounded-full bg-green-800 p-0.5 text-center font-bebas-neue text-[8px] font-bold leading-none text-light-100;
+    }
+
+    /* Search */
+    .search {
+        @apply relative mt-10 flex min-h-14 w-full items-center rounded-xl bg-dark-300 px-4;
+    }
+
+    .search-input {
+        @apply w-full border-none font-bold placeholder:font-normal text-white placeholder:text-light-100 focus-visible:ring-0 focus-visible:shadow-none !important;
+    }
+
+    /* Book Receipt */
+    .book-receipt_admin-btn {
+        @apply bg-light-300 rounded-md text-primary-admin font-semibold hover:bg-light-300/80 !important;
+    }
+
+    /* Book Ticket */
+    #book-ticket {
+        @apply relative mt-10 hidden w-[544px] overflow-hidden bg-dark-300 py-8;
+    }
+
+    #book-ticket #book-details div {
+        @apply space-y-1 rounded-md border border-light-100/10 p-3;
+    }
+
+    #book-ticket #book-details div p:first-child {
+        @apply text-xs text-light-700;
+    }
+
+    #book-ticket #book-details div p:last-child {
+        @apply text-sm font-bold text-white;
+    }
+
+    #book-ticket #book-divider div:first-child {
+        @apply absolute -left-3.5 top-1/2 size-7 -translate-y-1/2 rounded-full bg-black;
+    }
+
+    #book-ticket #book-divider div:last-child {
+        @apply absolute -right-3.5 top-1/2 size-7 -translate-y-1/2 rounded-full bg-black;
+    }
+
+    .book-ticket-circles {
+        @apply absolute inset-x-0 -bottom-6 flex flex-row gap-1.5;
+    }
+
+    /* Not Found */
+    #not-found {
+        @apply flex justify-center items-center flex-col text-center w-full;
+    }
+
+    #not-found h4 {
+        @apply text-white mt-6 font-semibold text-2xl;
+    }
+
+    #not-found p {
+        @apply text-light-100 w-[360px] mt-1;
+    }
+
+    .not-found-btn {
+        @apply bg-primary font-bebas-neue min-w-[360px] mt-6 text-black-100 text-xl hover:bg-primary/90 min-h-12 !important;
+    }
+
+    /* Pagination */
+    #pagination {
+        @apply flex flex-row justify-end gap-3;
+    }
+
+    .pagination-btn_light {
+        @apply bg-light-300 text-black-300 hover:bg-light-300/70 !important;
+    }
+
+    .pagination-btn_dark {
+        @apply bg-dark-300 hover:bg-dark-100 !important;
+    }
+
+    #pagination p {
+        @apply text-sm inline-flex items-center font-semibold px-4 py-1.5 rounded-md text-center;
+    }
+
+    /* Sort */
+    .select-trigger {
+        @apply w-40 h-10 px-4 bg-dark-300 text-light-100 border-dark-100 !important;
+    }
+
+    .select-content {
+        @apply bg-dark-300 text-light-100 border-dark-100 !important;
+    }
+
+    .select-item {
+        @apply focus:bg-dark-600 focus:text-light-100 !important;
+    }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+    .gradient-vertical {
+        background: linear-gradient(180deg, #12141d 0%, #12151f 100%);
+    }
+
+    .gradient-gray {
+        background: linear-gradient(270deg, #37363a 0%, #353637 100%);
+    }
+
+    .gradient-blue {
+        background: linear-gradient(180deg, #232839 0%, #12141d 100%);
+    }
+
+    /* Auth */
+    .auth-container {
+        @apply relative flex flex-col-reverse text-light-100 sm:flex-row;
+    }
+
+    .auth-form {
+        @apply my-auto flex h-full min-h-screen flex-1 items-center bg-cover bg-top bg-light-100 px-5 py-10;
+    }
+
+    .auth-box {
+        @apply bg-white mx-auto flex max-w-xl flex-col gap-6 rounded-lg p-10;
+    }
+
+    .auth-illustration {
+        @apply sticky h-40 w-full sm:top-0 sm:h-screen sm:flex-1;
+    }
+
+    /* Root */
+    .root-container {
+        @apply flex min-h-screen flex-1 flex-col   bg-cover bg-top bg-dark-100 px-5 xs:px-10 md:px-16;
+    }
+
+    /* Book Details */
+    .book-details {
+        @apply lg:mt-36 mt-16 mb-20 flex flex-col gap-16 lg:flex-row;
+    }
+
+    .book-details h3 {
+        @apply text-xl font-semibold text-primary;
+    }
+
+    /* Library */
+    .library {
+        @apply mx-auto flex max-w-xl w-full flex-col text-center;
+    }
+
+    .library-subtitle {
+        @apply text-lg font-semibold uppercase text-light-100;
+    }
+
+    .library-title {
+        @apply mt-2 text-3xl font-semibold text-white xs:text-5xl;
+    }
+
+    .flex-between {
+        @apply flex justify-between items-center;
+    }
+
+    .text-30-extrabold {
+        @apply text-[30px] font-extrabold text-white;
+    }
+
+    .text-30-bold {
+        @apply text-[30px] font-bold text-black;
+    }
+
+    .text-30-semibold {
+        @apply font-semibold text-[30px] text-black;
+    }
+
+    .text-26-semibold {
+        @apply font-semibold text-[26px] text-black;
+    }
+
+    .text-24-black {
+        @apply text-[24px] font-black text-black;
+    }
+
+    .text-20-medium {
+        @apply font-medium text-[20px] text-black;
+    }
+
+    .text-16-medium {
+        @apply font-medium text-[16px] text-black;
+    }
+
+    .text-14-normal {
+        @apply font-normal text-sm text-white-100/80;
+    }
+
+    .pink_container {
+        @apply w-full bg-primary min-h-[530px] pattern flex justify-center items-center flex-col py-10 px-6;
+    }
+
+    .tag {
+        @apply bg-secondary px-6 py-3 font-work-sans font-bold rounded-sm uppercase relative tag-tri;
+    }
+
+    .heading {
+        @apply uppercase bg-black px-6 py-3 font-work-sans font-extrabold text-white sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5;
+    }
+
+    .sub-heading {
+        @apply font-medium text-[20px] text-white max-w-2xl text-center break-words;
+    }
+
+    .section_container {
+        @apply px-6 py-10 max-w-7xl mx-auto;
+    }
+
+    .card_grid {
+        @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+    }
+
+    .card_grid-sm {
+        @apply grid sm:grid-cols-2 gap-5;
+    }
+
+    .no-result {
+        @apply text-black-100 text-sm font-normal;
+    }
+
+    /* profile */
+    .profile_container {
+        @apply w-full pb-10 pt-20 px-6 max-w-7xl mx-auto lg:flex-row flex-col flex gap-10;
+    }
+
+    .profile_card {
+        @apply w-80 px-6 pb-6 pt-20 flex flex-col justify-center items-center bg-primary border-[5px] border-black shadow-100 rounded-[30px] relative z-0 h-fit max-lg:w-full;
+    }
+
+    .profile_title {
+        @apply w-11/12 bg-white border-[5px] border-black rounded-[20px] px-5 py-3 absolute -top-9 after:absolute after:content-[''] after:-top-1 after:right-0 after:-skew-y-6 after:bg-black after:-z-[1] after:rounded-[20px] after:w-full after:h-[60px] before:absolute before:content-[''] before:-bottom-1 before:left-0 before:-skew-y-6 before:w-full before:h-[60px] before:bg-black before:-z-[1] before:rounded-[20px] shadow-100;
+    }
+
+    .profile_image {
+        @apply rounded-full object-cover border-[3px] border-black;
+    }
+
+    /* idea details */
+    .divider {
+        @apply border-dotted bg-zinc-400 max-w-4xl my-10 mx-auto;
+    }
+
+    .view_skeleton {
+        @apply bg-zinc-400 h-10 w-24 rounded-lg fixed bottom-3 right-3;
+    }
+
+    /* navbar */
+    .avatar {
+        @apply p-0 focus-visible:ring-0 bg-none rounded-full drop-shadow-md !important;
+    }
+
+    .dropdown-menu {
+        @apply w-56 border-[5px] border-black bg-white p-5 rounded-2xl !important;
+    }
+
+    .login {
+        @apply border-[5px] py-4 border-black bg-white text-black relative shadow-100 font-work-sans font-medium hover:shadow-none transition-all duration-500 !important;
+    }
+
+    /* searchform */
+    .search-form {
+        @apply max-w-3xl w-full min-h-[80px] bg-white border-[5px] border-black rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5;
+    }
+
+    .search-input {
+        @apply flex-1 font-bold placeholder:font-semibold placeholder:text-black-100 w-full h-auto outline-none;
+    }
+
+    .search-btn {
+        @apply size-[50px] rounded-full bg-black flex justify-center items-center !important;
+    }
+
+    /* startupcard */
+    .startup-card {
+        @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100;
+    }
+
+    .startup-card_date {
+        @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full group-hover:bg-white-100;
+    }
+
+    .startup-card_desc {
+        @apply font-normal text-[16px] line-clamp-2 my-3 text-black-100 break-all;
+    }
+
+    .startup-card_img {
+        @apply w-full h-[164px] rounded-[10px] object-cover;
+    }
+
+    .startup-card_btn {
+        @apply rounded-full bg-black-200 font-medium text-[16px] text-white px-5 py-3 !important;
+    }
+
+    .startup-card_skeleton {
+        @apply w-full h-96 rounded-[22px] bg-zinc-400;
+    }
+
+    /* startupform */
+    .startup-form {
+        @apply max-w-2xl mx-auto bg-white my-10 space-y-8 px-6;
+    }
+
+    .startup-form_label {
+        @apply font-bold text-[18px] text-black uppercase;
+    }
+
+    .startup-form_input {
+        @apply border-[3px] border-black px-5 py-7 text-[18px] text-black font-semibold rounded-full mt-3 placeholder:text-black-300 !important;
+    }
+
+    .startup-form_textarea {
+        @apply border-[3px] border-black p-5 text-[18px] text-black font-semibold rounded-[20px] mt-3 placeholder:text-black-300 !important;
+    }
+
+    .startup-form_error {
+        @apply text-red-500 mt-2 ml-5;
+    }
+
+    .startup-form_editor {
+        @apply mt-3 border-[3px] border-black text-[18px] text-black font-semibold placeholder:text-black-300 !important;
+    }
+
+    .startup-form_btn {
+        @apply bg-primary border-[4px] border-black rounded-full p-5 min-h-[70px] w-full font-bold text-[18px] !important;
+    }
+
+    /* view */
+    .view-container {
+        @apply flex justify-end items-center mt-5 fixed bottom-3 right-3;
+    }
+
+    .view-text {
+        @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-lg capitalize;
+    }
+
+    .category-tag {
+        @apply font-medium text-[16px] bg-primary-100 px-4 py-2 rounded-full;
+    }
+
+    .pattern {
+        background-image: linear-gradient(to right,
+                transparent 49.5%,
+                rgba(251, 232, 67, 0.2) 49.5%,
+                rgba(251, 232, 67, 0.6) 50.5%,
+                transparent 50.5%);
+        background-size: 5% 100%;
+        background-position: center;
+        background-repeat: repeat-x;
+    }
+
+    .tag-tri {
+        @apply before:content-[''] before:absolute before:top-2 before:left-2 before:border-t-[10px] before:border-t-black before:border-r-[10px] before:border-r-transparent after:content-[''] after:absolute after:bottom-2 after:right-2 after:border-b-[10px] after:border-b-black after:border-l-[10px] after:border-l-transparent;
+    }
+}
+
+.w-md-editor-toolbar {
+    padding: 10px !important;
 }
