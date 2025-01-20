@@ -1,9 +1,12 @@
+import { auth } from "@/auth";
 import Navbar from "../../components/Navbar";
 
-export default function Layout ({children}) {
+export default async function Layout ({children}) {
+    const session = await auth()
+    
     return (
         <main>
-            <Navbar/>
+            <Navbar session={session}/>
             {children}
         </main>
     )

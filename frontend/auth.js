@@ -74,7 +74,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     error: "/auth/error",
   },
   callbacks: {
-    // `signIn` callback to ensure user is added or updated in the database
+    
     async signIn({ user, account, profile }) {
       await connectToDatabase();
 

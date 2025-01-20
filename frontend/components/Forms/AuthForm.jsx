@@ -15,10 +15,10 @@ import {
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import ImageUpload from "../ImageUpload";
-import { toast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { signIn } from "next-auth/react";
+import { toast } from "@/hooks/use-toast";
 
 const AuthForm = ({ schema, defaultValues, onSubmit, type }) => {
     const router = useRouter();
@@ -31,21 +31,20 @@ const AuthForm = ({ schema, defaultValues, onSubmit, type }) => {
 
     const handleSubmit = async (data) => {
         const result = await onSubmit({ ...data, provider: "credentials" });
-        if (result) {
+        console.log(result);
+        if (result.success == true) {
             toast({
-                title: "Success",
-                description: isSignIn
-                    ? "You have successfully signed in"
-                    : "You have successfully signed up",
+                description: result.message || "You have successfully signed in",
             });
-        } else {
+            router.push("/");
+        } else if(result.success == false) {
             toast({
                 title: "Error",
                 description: result || "An error occurred",
                 variant: "destructive",
             });
         }
-        router.push("/");
+        
     };
     const handleSubmitForGoogle = async () => {
         try {
@@ -142,7 +141,7 @@ const AuthForm = ({ schema, defaultValues, onSubmit, type }) => {
                         <div
                             className="w-full h-full text-xl gap-x-0.5 gap-y-0.5 justify-center text-[#101010] bg-[linear-gradient(#f4f4f4,#fefefe)] group-hover:bg-[linear-gradient(#e2e2e2,#fefefe)] duration-200 items-center text-[18px] font-medium gap-4 inline-flex overflow-hidden px-4 py-2 rounded-full black group-hover:text-blue-600"
                         >
-                            <Image src={'/google.svg'} alt="Google Icon" width={25} height={25} />
+                            <Image src={'/icons/google.svg'} alt="Google Icon" width={25} height={25} />
                             <span className="ml-2">Sign In with Google</span>
                         </div>
                     </div>

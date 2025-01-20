@@ -1,60 +1,26 @@
 "use server"
 
-import { signIn as authSignIn } from "@/auth"; // Auth.js signIn function
+import { signIn as authSignIn, signOut } from "@/auth"; // Auth.js signIn function
 import bcrypt from "bcryptjs";
 import Users from "@/database/user.schema";
 import connectToDatabase from "./db";
 
-export const signUpOrSignIn = async (params) => {
+export const signUp = async (params) => {
   const { email, password, provider, fullName } = params;
 
   await connectToDatabase();
 
   try {
-    if (provider === "google") {
-      // OAuth: Google sign-in/signup flow
-      const existingUser = await Users.findOne({ email });
-
-      if (existingUser) {
-        // If user exists, sign them in using Auth.js
-        const result = await authSignIn("google", { email, redirect: false });
-        if (result?.error) {
-          throw new Error("Failed to sign in with Google");
-        }
-      } else {
-        // If the user doesn't exist, create a new user in the database
-        const newUser = new Users({
-          email,
-          password: "", // For OAuth providers like Google, password is not required
-          fullName,
-        });
-
-        await newUser.save();
-
-        // After creating a new user, sign them in using Auth.js
-        const result = await authSignIn("google", { email, redirect: false });
-        if (result?.error) {
-          throw new Error("Failed to sign up with Google");
-        }
-      }
-    } else if (provider === "credentials") {
+    if (provider === "credentials") {
       console.log("Signing in with email/password");
 
       // Check if the user exists in the database
       const existingUser = await Users.findOne({ email });
 
       if (existingUser) {
-        // If user exists, compare password
-        const isPasswordValid = await bcrypt.compare(password, existingUser.password);
-        if (!isPasswordValid) {
-          throw new Error("Invalid credentials");
-        }
+        // If user exists, return the user with this email already exists
+        return { success: false, message: "User with this email already exists" };
 
-        // Sign in using Auth.js
-        const result = await authSignIn("credentials", { email, password, redirect: false });
-        if (result?.error) {
-          throw new Error("Failed to sign in with email/password");
-        }
       } else {
         // If user doesn't exist, create a new user and hash the password
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -69,8 +35,11 @@ export const signUpOrSignIn = async (params) => {
 
         // After saving the user, sign them in using Auth.js
         const result = await authSignIn("credentials", { email, password, redirect: false });
+
         if (result?.error) {
           throw new Error("Failed to sign up with email/password");
+        } else {
+          return { success: true, message: "Signed in successfully" };
         }
       }
     }
@@ -79,3 +48,48 @@ export const signUpOrSignIn = async (params) => {
     throw new Error(error.message || "Something went wrong");
   }
 };
+
+export const signIn = async (params) => {
+  const { email, password, provider } = params;
+
+  await connectToDatabase();
+
+  try {
+    if (provider === "credentials") {
+
+      // Check if the user exists in the database
+      const user = await Users.findOne({ email });
+
+      if (!user) {
+        // If user doesn't exist, return the user with this email doesn't exist
+        return { success: false, message: "User with this email doesn't exist" };
+      }
+
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+
+      if (!isPasswordValid) {
+        // If password is invalid, return the user with invalid password
+        return { success: false, message: "Invalid password" };
+      }
+
+      // If user exists and password is valid, return the user
+      const result = await authSignIn("credentials", { email, password, redirect: false });
+      if (result?.error) {
+        throw new Error("Failed to sign in with email/password");
+      } else {
+        return { success: true, message: "Signed in successfully" };
+      }
+    }
+  } catch (error) {
+    console.error("Error signing in or registering user:", error);
+    throw new Error(error.message || "Something went wrong");
+  }
+}
+
+export const logOut = async () => {
+  await signOut(
+    {
+      redirectTo: "/"
+    }
+  )
+}
