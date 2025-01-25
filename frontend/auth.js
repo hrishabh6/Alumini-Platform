@@ -15,9 +15,14 @@ async function connectToDatabase() {
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  // Use AUTH_SECRET for JWT signing and verification
+  secret: process.env.AUTH_SECRET,
+  
   session: {
-    strategy: "jwt", // Using JWT strategy for session handling
+    strategy: "jwt", // Using JWT for session handling
+    maxAge: 24 * 60 * 60, // 24 hours session expiration
   },
+  
   providers: [
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID,
@@ -50,31 +55,46 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           id: user._id.toString(),
           email: user.email,
           fullName: user.fullName,
-          phoneNumber: user.phoneNumber,
-          college: user.college,
-          graduationYear: user.graduationYear,
-          fieldOfStudy: user.fieldOfStudy,
-          profileType: user.profileType,
-          profileComplete: user.profileComplete,
-          linkedin: user.linkedin,
-          github: user.github,
-          notificationsEnabled: user.notificationsEnabled,
-          jobHistory: user.jobHistory,
-          resetPasswordToken: user.resetPasswordToken,
-          resetPasswordExpires: user.resetPasswordExpires,
           profilePicture: user.profilePicture,
-          createdAt: user.createdAt,
-          updatedAt: user.updatedAt,
         };
       },
     }),
   ],
+
   pages: {
-    signIn: "/auth/signin",
-    error: "/auth/error",
+    signIn: "/auth/signin", // Custom sign-in page
+    error: "/auth/error",   // Custom error page
   },
+
   callbacks: {
-    
+    // Handle JWT creation and expiration
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = {
+          ...user,
+        };
+        token.expires = Math.floor(Date.now() / 1000) + 60 * 60 * 24; // Expires in 24 hours
+      }
+
+      if (token.expires && Date.now() >= token.expires * 1000) {
+        throw new Error("Token expired"); // Optional error handling
+      }
+
+      return token;
+    },
+
+    // Include full user details and session expiration
+    async session({ session, token }) {
+      if (token.user) {
+        session.user.name = token.user.name;
+        session.user.email = token.user.email;
+        session.user.id = token.user.id;
+        session.expires = token.expires ? new Date(token.expires * 1000).toISOString() : null;
+      }
+      return session;
+    },
+
+    // Sign-in callback to handle Google provider users
     async signIn({ user, account, profile }) {
       await connectToDatabase();
 
@@ -86,7 +106,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           existingUser = await Users.create({
             email: profile.email,
             fullName: profile.name,
-            password: null, // Set password to null for OAuth users
+            password: null, // No password for Google users
             profilePicture: profile.picture,
           });
         } else {
@@ -102,44 +122,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
       return true;
     },
-
-    // Include all user fields in the JWT token
-    async jwt({ token, user }) {
-      if (user) {
-        token.user = {
-          id: user.id,
-          email: user.email,
-          fullName: user.fullName,
-          phoneNumber: user.phoneNumber,
-          college: user.college,
-          graduationYear: user.graduationYear,
-          fieldOfStudy: user.fieldOfStudy,
-          profileType: user.profileType,
-          profileComplete: user.profileComplete,
-          linkedin: user.linkedin,
-          github: user.github,
-          notificationsEnabled: user.notificationsEnabled,
-          jobHistory: user.jobHistory,
-          resetPasswordToken: user.resetPasswordToken,
-          resetPasswordExpires: user.resetPasswordExpires,
-          profilePicture: user.profilePicture,
-          createdAt: user.createdAt,
-          updatedAt: user.updatedAt,
-        };
-      }
-      return token;
-    },
-  
-    // Add the full user object to the session
-    async session({ session, token }) {
-      if (token.user) {
-        session.user = token.user; // Attach the full user object to the session
-      }
-      return session;
-    },
-  }
-
-
-    
   },
-);
+});

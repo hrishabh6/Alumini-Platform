@@ -1,7 +1,7 @@
 export const NavContents = [
     {
-        name: 'Posts',
-        href: '/feed',
+        name: 'feed',
+        href: '/',
         icon : "/icons/home.svg",
         ifSignIn: false
     },
@@ -9,20 +9,22 @@ export const NavContents = [
         name: 'My College',
         href: '/college',
         icon : "/icons/college.svg",
-        ifSignIn: true
+        ifSignIn: false
+    },
+    {
+        name: 'People',
+        href: '/explore',
+        icon : "/icons/people.svg",
+        ifSignIn: false,
+        ifUserExist: true
     },
     {
         name: 'Connections',
-        href: '/college',
+        href: '/connect',
         icon : "/icons/people.svg",
         ifSignIn: true
     },
-    {
-        name : "people",
-        href : "/people",
-        icon : "/icons/people.svg",
-        ifSignIn: false
-    },
+    
     {
         name: 'Jobs',
         href: '/jobs',
