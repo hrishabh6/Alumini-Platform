@@ -73,26 +73,29 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         token.user = {
           ...user,
         };
-        token.expires = Math.floor(Date.now() / 1000) + 60 * 60 * 24; // Expires in 24 hours
+        // Set token expiration to 7 days (7 * 24 * 60 * 60 seconds)
+        token.expires = Math.floor(Date.now() / 1000) + 7 * 24 * 60 * 60;
       }
-
+    
       if (token.expires && Date.now() >= token.expires * 1000) {
         throw new Error("Token expired"); // Optional error handling
       }
-
+    
       return token;
     },
-
+    
     // Include full user details and session expiration
     async session({ session, token }) {
       if (token.user) {
         session.user.name = token.user.name;
         session.user.email = token.user.email;
         session.user.id = token.user.id;
+        // Convert token expiration to ISO string for the session
         session.expires = token.expires ? new Date(token.expires * 1000).toISOString() : null;
       }
       return session;
     },
+    
 
     // Sign-in callback to handle Google provider users
     async signIn({ user, account, profile }) {

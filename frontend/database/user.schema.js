@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: false,  // Optional
   },
+  bio: {
+    type: String,
+    required: false,  // Optional
+  },
   profileType: {
     type: String,
     enum: ['Student', 'Alumni', 'Faculty'],

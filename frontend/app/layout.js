@@ -63,7 +63,8 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <SessionProvider session={session}>
         <body
-          className={workSans.variable}
+          className={`${workSans.variable} bg-[#F4F2EE] `}
+
         >
           {children}
           <Toaster />
