@@ -9,7 +9,7 @@ const LeftSideBar = async ({ session }) => {
   console.log(user)
 
     return (
-      <section className="flex flex-col w-1/4 max-xl:w-2/5 absolute top-28 left-20 z-10 max-md:static max-md:w-full max-md:my-5 rounded-md shadow-md bg-white">
+      <section className="flex flex-col w-full mt-28 max-xl:mt-20 z-10 max-md:static max-md:w-full h-fit rounded-md shadow-md bg-white">
         <div className="flex flex-col h-[160px] rounded-md relative">
           {/* Background Image */}
           <div className="w-full h-[70px] rounded-tl-md rounded-tr-md bg-cover bg-center relative">

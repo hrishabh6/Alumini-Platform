@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local"
 import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/toaster"
+import Navbar from "@/components/shared/Navbar";
 
 const workSans = localFont({
   src: [
@@ -66,6 +67,7 @@ export default async function RootLayout({ children }) {
           className={`${workSans.variable} bg-[#F4F2EE] `}
 
         >
+          <Navbar session={session} />
           {children}
           <Toaster />
         </body>

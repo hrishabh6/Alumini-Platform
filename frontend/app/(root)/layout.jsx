@@ -5,17 +5,11 @@ import LeftSideBar from "../../components/shared/LeftSideBar";
 export default async function Layout({ children }) {
     const session = await auth()
     return (
-        <>
-        <Navbar session={session} />
-            <main className="min-h-screen min-w-full max-md:px-10">
-                {
-                    session ? <LeftSideBar session={session} /> : null
-                }
+        <main className="w-full min-h-screen ">
 
                 {children}
-            </main>
-
-        <FixedMobileNav session={session} />
-        </>
+           
+            <FixedMobileNav session={session} />
+        </main>
     )
 }
