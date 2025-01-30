@@ -22,7 +22,7 @@ const PostCreator = () => {
   }, []);
 
   return (
-    <div className="w-full bg-white rounded-lg shadow px-4 lg:p-4 md:mx-10 relative flex flex-col items-center justify-center md:top-24 xl:top-28">
+    <div className="w-full bg-white rounded-lg shadow px-4 lg:p-4 md:mx-10 relative flex flex-col items-center justify-center kmd:top-24 xl:top-28">
       {/* Header Section */}
       <div className="flex items-center gap-3 w-full">
         <Image
