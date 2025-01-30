@@ -12,7 +12,7 @@ function Post({ profileImage, name, title, content, postImage }) {
   const handleRepost = () => setReposts(reposts + 1);
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 mb-4">
+    <div className="bg-white shadow-md rounded-lg p-4 mb-2  w-full">
       <div className="flex items-center space-x-4 mb-4">
         <img
           src={profileImage}
@@ -67,6 +67,9 @@ function Post({ profileImage, name, title, content, postImage }) {
         <p>{comments} Comments</p>
         <p>{reposts} Reposts</p>
       </div>
+
+      
+
     </div>
   );
 }
@@ -100,13 +103,10 @@ export default function PostFeed() {
   ];
 
   return (
-    <div className="bg-gray-100 min-h-screen p-8">
-      <h1 className="text-2xl font-bold text-center mb-6">Alumni Posts</h1>
-      <div className="max-w-lg mx-auto overflow-y-auto h-[80vh]">
-        {posts.map((post) => (
-          <Post key={post.id} {...post} />
-        ))}
-      </div>
+    <div className="w-full">
+      {posts.map((post) => (
+        <Post key={post.id} {...post} />
+      ))}
     </div>
   );
 }
