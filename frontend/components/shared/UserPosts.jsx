@@ -1,6 +1,7 @@
 "use client"; 
 
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 function Post({ profileImage, name, title, content, postImage }) {
   const [likes, setLikes] = useState(0);
@@ -35,13 +36,13 @@ function Post({ profileImage, name, title, content, postImage }) {
 
       {/* Action Buttons */}
       <div className="flex justify-between items-center border-t border-b py-2 text-gray-500 text-sm">
-        <button
+        <Button
           onClick={handleLike}
           className="flex items-center hover:text-blue-500 space-x-1"
         >
           <span>👍</span>
           <span>Like</span>
-        </button>
+        </Button>
         <button
           onClick={handleComment}
           className="flex items-center hover:text-blue-500 space-x-1"
