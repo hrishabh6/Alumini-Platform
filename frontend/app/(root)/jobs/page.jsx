@@ -5,7 +5,18 @@ const page = () => {
   return (
     <div>
       <JobFilterLayout>
-        
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
+        <JobCard/>
       </JobFilterLayout>
     </div>
   )
