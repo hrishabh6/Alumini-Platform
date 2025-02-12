@@ -28,7 +28,7 @@ const JobFilterLayout = ({ children }) => {
                     />
 
                     {/* Left sidebar with filters */}
-                    <aside className={`fixed md:static inset-y-0 right-0 w-[80%] md:w-auto md:col-span-3 bg-[#F9F9F9] z-50 transform transition-transform duration-300 ${isFilterOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`}>
+                    <aside className={`fixed md:static inset-y-0 right-0 w-[80%] md:w-auto md:col-span-3 bg-[#F9F9F9] z-0 max-md:z-50 transform transition-transform duration-300 ${isFilterOpen ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`}>
                         <div className="h-full md:h-auto overflow-y-auto md:overflow-visible p-6 md:p-0 space-y-6">
                             {/* Mobile Close Button */}
                             <div className="flex justify-between items-center md:hidden">
