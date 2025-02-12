@@ -6,7 +6,7 @@ export const NavContents = [
         ifSignIn: false
     },
     {
-        name: 'My College',
+        name: 'College',
         href: '/college',
         icon : "/icons/college.svg",
         ifSignIn: false

@@ -4,11 +4,10 @@ import PostFeed from './shared/UserPosts'
 
 const HeroSection = () => {
   return (
-    <div className='flex w-full max-md:mt-5 md:pl-20 lg:px-10 flex-col justify-between gap-4  sm:items-center relative  md:top-24 xl:top-28'>
-      <PostCreator/>
-      <PostFeed/>
-      
-    </div>
+    <main className="col-span-1 w-full space-y-4 max-md:space-y-0 max-md:mt-8">
+      <PostCreator />
+      <PostFeed />
+    </main>
   )
 }
 

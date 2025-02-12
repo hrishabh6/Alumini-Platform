@@ -11,8 +11,8 @@ import MobileNav from './MobileNav'
 const Navbar = ({ session }) => {
 
     return (
-        <header className='px-5 py-3 bg-white shadow-sm font-work-sans z-50 fixed w-full'>
-            <nav className={`flex justify-between items-center mx-auto  ${!session?.user && "max-w-7xl"} `}>
+        <header className='max-md:px-5 max-md:py-3 py-2 px-3  bg-white shadow-sm font-work-sans z-50 fixed w-full'>
+            <nav className={`flex justify-between items-center mx-auto max-w-7xl  `}>
                 <Link href='/' className='flex items-center gap-2'>
                     <Image src='/icons/logo.svg' alt='logo' width={30} height={30} />
                     <p className='text-[#00308F] font-bold font-work-sans text-xl max-xl:hidden'>AluConnect</p>

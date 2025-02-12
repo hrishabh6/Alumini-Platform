@@ -59,19 +59,20 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   const session = await auth()
-  
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body
-          className={`${workSans.variable} bg-[#F4F2EE] `}
-
-        >
-          <Navbar session={session} />
-          {children}
+        <body className={`${workSans.variable} bg-[#F4F2EE]`}>
+          <div className="min-h-screen">
+            <Navbar session={session} />
+            <div className="pt-[60px] w-full">
+            <div className=" max-md:px-0">
+              {children}
+            </div>
+            </div>
+          </div>
           <Toaster />
         </body>
-
       </SessionProvider>
     </html>
   );

@@ -43,7 +43,7 @@ const PostForm = () => {
   };
 
   return (
-    <div className="w-full bg-white rounded-lg shadow px-4 lg:p-4 md:mx-10 relative flex flex-col items-center justify-center ">
+    <div className="w-full bg-white shadow-sm p-4 max-md:rounded-none">
       {/* Header Section */}
       <div className="flex items-center gap-3 w-full">
         <Image
@@ -59,8 +59,9 @@ const PostForm = () => {
         >
           Start a post, try writing with AI
         </Button>
+        
       </div>
-
+      <hr className='md:hidden'/>
       {isPopupOpen && (
         <form onSubmit={submitHandler}>
           <div
@@ -167,6 +168,7 @@ const PostForm = () => {
           </div>
         </form>
       )}
+      
     </div>
   );
 };

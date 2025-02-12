@@ -1,4 +1,4 @@
-"use client"; 
+"use client";
 
 import { useState } from "react";
 import { Button } from "../ui/button";
@@ -13,12 +13,12 @@ function Post({ profileImage, name, title, content, postImage }) {
   const handleRepost = () => setReposts(reposts + 1);
 
   return (
-    <div className="bg-white shadow-md rounded-lg p-4 mb-2  w-full">
+    <article className="w-full bg-white shadow-sm p-4 max-md:rounded-none relative">
       <div className="flex items-center space-x-4 mb-4">
         <img
           src={profileImage}
           alt="Profile"
-          className="w-12 h-12 rounded-full"/>
+          className="w-12 h-12 rounded-full" />
         <div>
           <h3 className="text-lg font-medium">{name}</h3>
           <p className="text-gray-500 text-sm">{title}</p>
@@ -69,9 +69,9 @@ function Post({ profileImage, name, title, content, postImage }) {
         <p>{reposts} Reposts</p>
       </div>
 
-      
 
-    </div>
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gray-200 max-md:block hidden" />
+    </article>
   );
 }
 
@@ -104,7 +104,7 @@ export default function PostFeed() {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full divide-y divide-gray-200 max-md:space-y-0 max-md:divide-y">
       {posts.map((post) => (
         <Post key={post.id} {...post} />
       ))}

@@ -9,12 +9,13 @@ const LeftSideBar = async ({ session }) => {
   console.log(user)
 
     return (
-      <section className="flex flex-col w-full mt-28 max-xl:mt-20 z-10 max-md:static max-md:w-full h-fit rounded-md shadow-md bg-white">
-        <div className="flex flex-col h-[160px] rounded-md relative">
+      <aside className="col-span-1 space-y-4 h-fit max-md:space-y-0">
+      <section className="bg-white shadow-sm max-md:rounded-none">
+        <div className="flex flex-col h-[160px] relative">
           {/* Background Image */}
           <div className="w-full h-[70px] rounded-tl-md rounded-tr-md bg-cover bg-center relative">
             <Image
-              src="/images/cover-image.png"
+              src="/image/cover-image.png"
               alt="cover image"
               layout="fill"
               objectFit="cover"
@@ -47,6 +48,7 @@ const LeftSideBar = async ({ session }) => {
           </div>
         </div>
       </section>
+      </aside>
     )
 }
 
