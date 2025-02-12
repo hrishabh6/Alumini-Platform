@@ -33,10 +33,10 @@ const AuthForm = ({ schema, defaultValues, onSubmit, type }) => {
         const result = await onSubmit({ ...data, provider: "credentials" });
         console.log(result);
         if (result.success == true) {
+            router.push("/");
             toast({
                 description: result.message || "You have successfully signed in",
             });
-            router.push("/");
         } else if(result.success == false) {
             toast({
                 title: "Error",
