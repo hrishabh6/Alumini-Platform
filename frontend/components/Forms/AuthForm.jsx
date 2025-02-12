@@ -104,7 +104,7 @@ const AuthForm = ({ schema, defaultValues, onSubmit, type }) => {
                                             <Input
                                                 required
                                                 className="form-input"
-                                                type="text"
+                                                type={field}
                                                 {...inputField}
                                             />
                                         )}

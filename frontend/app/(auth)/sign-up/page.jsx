@@ -7,7 +7,7 @@ import React, { useEffect } from 'react'
 const page = () => {
   
   return (
-    <div>
+    <div className='max-w-md mx-auto bg-gray-50 p-10'>
       <AuthForm type='SIGN_UP' schema={signUpSchema} defaultValues={{fullName : "", email : "", password: ""}} onSubmit={signUp}/>
     </div>
   )

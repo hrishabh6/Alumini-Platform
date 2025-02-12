@@ -41,7 +41,7 @@ const AuthLayout = async ({ children }) => {
 
             {/* Right Section - Auth Form */}
             <section className="w-full lg:w-1/2 flex items-center justify-center p-8 bg-white">
-                <div className="w-full max-w-md">
+                <div className="w-full">
                     {children}
                 </div>
             </section>

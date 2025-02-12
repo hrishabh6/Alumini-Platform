@@ -6,7 +6,8 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
+    <div className='max-w-md mx-auto bg-gray-50 p-10'>
+      
       <AuthForm type='SIGN_IN' schema={loginSchema} defaultValues={{email : "", password: ""}} onSubmit={signIn}/>
     </div>
   )

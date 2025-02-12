@@ -4,7 +4,7 @@ import Navbar from "./shared/Navbar";
 
 export default function LayoutWrapper({ session, children }) {
   const pathname = usePathname();
-  const hideNavbarRoutes = ["/sign-up", "/sign-in"];
+  const hideNavbarRoutes = ["/sign-up", "/sign-in", "/onboarding"];
   const shouldShowNavbar = !hideNavbarRoutes.includes(pathname);
 
   return (
