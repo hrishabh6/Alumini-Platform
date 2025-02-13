@@ -16,7 +16,7 @@
     }
 
     .form-input {
-        @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-dark-100 placeholder:text-dark-400   bg-transparent shadow-md !important;
+        @apply w-full min-h-14 border-none text-base font-bold placeholder:font-normal text-dark-700 placeholder:text-dark-400 bg-transparent shadow-md !important;
     }
 
     /* Book Card */

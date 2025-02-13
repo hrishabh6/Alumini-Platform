@@ -36,10 +36,10 @@ export default function JobsPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                             <Select>
                                 <SelectTrigger className="h-12 bg-transparent border-gray-700 hover:bg-gray-900 transition-colors">
-                                    <span className="flex items-center gap-2">
+                                    <div className="flex w-full gap-2">
                                         <Search className="w-5 h-5" />
                                         <SelectValue placeholder="Designer" />
-                                    </span>
+                                    </div>
                                 </SelectTrigger>
                                 <SelectContent className="bg-black text-white">
                                     <SelectItem value="ui">UI Designer</SelectItem>
@@ -50,10 +50,10 @@ export default function JobsPage() {
 
                             <Select>
                                 <SelectTrigger className="h-12 bg-transparent border-gray-700 hover:bg-gray-900 transition-colors">
-                                    <span className="flex items-center gap-2">
+                                <div className="flex w-full gap-2">
                                         <MapPin className="w-5 h-5" />
                                         <SelectValue placeholder="Work location" />
-                                    </span>
+                                    </div>
                                 </SelectTrigger>
                                 <SelectContent className="bg-black text-white">
                                     <SelectItem value="remote">Remote</SelectItem>
@@ -64,10 +64,10 @@ export default function JobsPage() {
 
                             <Select>
                                 <SelectTrigger className="h-12 bg-transparent border-gray-700 hover:bg-gray-900 transition-colors">
-                                    <span className="flex items-center gap-2">
+                                <div className="flex w-full gap-2">
                                         <Briefcase className="w-5 h-5" />
                                         <SelectValue placeholder="Experience" />
-                                    </span>
+                                    </div>
                                 </SelectTrigger>
                                 <SelectContent className="bg-black text-white">
                                     <SelectItem value="entry">Entry Level</SelectItem>
@@ -78,10 +78,10 @@ export default function JobsPage() {
 
                             <Select>
                                 <SelectTrigger className="h-12 bg-transparent border-gray-700 hover:bg-gray-900 transition-colors">
-                                    <span className="flex items-center gap-2">
+                                <div className="flex w-full gap-2">
                                         <Calendar className="w-5 h-5" />
                                         <SelectValue placeholder="Per month" />
-                                    </span>
+                                    </div>
                                 </SelectTrigger>
                                 <SelectContent className="bg-black text-white">
                                     <SelectItem value="full">Full Time</SelectItem>

@@ -12,7 +12,7 @@ const JobCard = ({
   companyLogo
 }) => {
   return (
-    <Card className="max-w-sm bg-orange-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
+    <Card className="max-w-sm bg-[#FFE1CB] rounded-xl overflow-hidden hover:shadow-lg transition-shadow">
       <CardContent className="p-4">
         <div className="flex justify-between items-start mb-4">
           <div>
@@ -32,7 +32,7 @@ const JobCard = ({
           {tags.map((tag, index) => (
             <span
               key={index}
-              className="px-3 py-1 text-sm bg-gray-100 rounded-full text-gray-600"
+              className="px-3 py-1 text-sm bg-gray-100 rounded-full text-black"
             >
               {tag}
             </span>

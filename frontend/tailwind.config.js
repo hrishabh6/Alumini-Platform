@@ -8,8 +8,8 @@ const config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./sanity/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{ts,tsx}", // Added for component compatibility
-    "*.{js,ts,jsx,tsx,mdx}" // Added for component compatibility
+    "./src/**/*.{ts,tsx}",
+    "*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     container: {
@@ -24,7 +24,10 @@ const config = {
         xs: '475px'
       },
       colors: {
-        // Keeping your existing color configurations
+        stanford: {
+          red: "#8C1515",
+          dark: "#2E2D29",
+        },
         primary: {
           '100': '#FFE8F0',
           DEFAULT: '#E7C9A5',
@@ -84,7 +87,6 @@ const config = {
         gray: {
           100: "#CBD5E1",
         },
-        // Theme colors needed by the component
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -132,13 +134,26 @@ const config = {
         '100': '2px 2px 0px 0px rgb(0, 0, 0)',
         '200': '2px 2px 0px 2px rgb(0, 0, 0)',
         '300': '2px 2px 0px 2px rgb(238, 43, 105)'
-      }
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     }
   },
   plugins: [
     tailwindcssAnimate,
     typography,
-    require("tailwindcss-animate")
   ],
 };
 

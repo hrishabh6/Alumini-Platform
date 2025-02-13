@@ -67,7 +67,6 @@ export default async function RootLayout({ children }) {
       <SessionProvider session={session}>
         <body className={`${workSans.variable} bg-[#F4F2EE]`}>
           <LayoutWrapper session={session}>{children}</LayoutWrapper>
-          <Toaster />
         </body>
       </SessionProvider>
     </html>
