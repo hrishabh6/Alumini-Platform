@@ -45,7 +45,7 @@ const PostForm = () => {
         <DialogTrigger asChild>
           <div className="p-4 flex items-center gap-3 cursor-pointer">
             <Avatar className="h-12 w-12">
-              <AvatarImage src="/image/profilePicture.png" alt="Profile" />
+              <AvatarImage src="/image/profilePicture.webp" alt="Profile" />
               <AvatarFallback>HJ</AvatarFallback>
             </Avatar>
             <Button 
@@ -65,7 +65,7 @@ const PostForm = () => {
               
               <div className="flex items-center gap-3 mb-4">
                 <Avatar className="h-10 w-10">
-                  <AvatarImage src="/image/profilePicture.png" alt="Profile" />
+                  <AvatarImage src="/image/profilePicture.webp" alt="Profile" />
                   <AvatarFallback>HJ</AvatarFallback>
                 </Avatar>
                 <div>

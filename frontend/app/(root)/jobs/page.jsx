@@ -1,23 +1,11 @@
 import React from 'react'
 import JobFilterLayout from '@/components/shared/JobFilterLayout'
-import JobCard from '@/components/shared/JobCard'
+import Card1 from '@/components/shared/Card1'
+import JobPage from "@/components/Job/JobUI"
 const page = () => {
   return (
     <div>
-      <JobFilterLayout>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-        <JobCard/>
-      </JobFilterLayout>
+      <JobPage/>
     </div>
   )
 }

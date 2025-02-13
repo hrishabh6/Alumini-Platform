@@ -61,7 +61,7 @@ const Navbar = ({ session }) => {
                                         <PopoverTrigger>
                                             <Avatar>
                                                 <AvatarImage src="https://github.com/shadcn.png" />
-                                                <AvatarFallback>CN</AvatarFallback>
+                                                <AvatarFallback>HJ</AvatarFallback>
                                             </Avatar>
 
                                         </PopoverTrigger>

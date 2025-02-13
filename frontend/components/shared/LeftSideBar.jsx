@@ -15,7 +15,7 @@ const LeftSideBar = async ({ session }) => {
           {/* Background Image */}
           <div className="w-full h-[70px] rounded-tl-md rounded-tr-md bg-cover bg-center relative">
             <Image
-              src="/image/cover-image.png"
+              src="/image/cover-image.webp"
               alt="cover image"
               layout="fill"
               objectFit="cover"
@@ -26,7 +26,7 @@ const LeftSideBar = async ({ session }) => {
           {/* Profile Image */}
           <div className="w-20 h-20 rounded-full bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <Image
-              src={user?.profilePicture || '/default-profile.png'}
+              src={user?.profilePicture || '/default-profile.webp'}
               alt="avatar"
               width={66}   // Smaller size for the profile image
               height={66}  // Smaller size for the profile image

@@ -64,7 +64,7 @@ const ImageUpload = ({ onFileChange }) => {
         ref={ikUploadRef}
         onError={onError}
         onSuccess={onSuccess}
-        fileName={`test-upload.png`}
+        fileName={`test-upload.webp`}
       />
       <Button className='upload-btn bg-[#232839] hover:bg-[#232839]' onClick={(e) => {
         e.preventDefault();

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import JobCard from "./JobCard";
+import Card1 from "./Card1";
 import { X, Filter } from 'lucide-react';
 
 const JobFilterLayout = ({ children }) => {
@@ -43,7 +43,7 @@ const JobFilterLayout = ({ children }) => {
 
                             {/* Black Card - Hidden on mobile */}
                             <div className="hidden xl:flex justify-center">
-                                <JobCard />
+                                <Card1 />
                             </div>
 
                             {/* Filters Section */}

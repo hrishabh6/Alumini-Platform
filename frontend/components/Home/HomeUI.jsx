@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import Image from 'next/image';
 
 const HomeUI = () => {
   return (
@@ -46,9 +47,11 @@ const HomeUI = () => {
           {/* Right Image Section */}
           <div className="flex-1 relative max-md:hidden">
             <div className="relative rounded-3xl overflow-hidden">
-              <img 
-                src="/image/stockImage.jpeg"
+              <Image 
+                src="/image/stockImage.webp"
                 alt="Business professional"
+                width={700}
+                height={700}
                 className="w-full h-[700px] object-cover"
               />
               

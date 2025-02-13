@@ -79,27 +79,27 @@ export default function PostFeed() {
   const posts = [
     {
       id: 1,
-      profileImage: "/image/profile1.png",
+      profileImage: "/image/profile1.webp",
       name: "John Doe",
       title: "Software Engineer",
       content: "Excited to share my latest project with the community!",
-      postImage: "image//project-image1.jpeg",
+      postImage: "image//project-image1.webp",
     },
     {
       id: 2,
-      profileImage: "/image//profile1.png",
+      profileImage: "/image//profile1.webp",
       name: "Jane Smith",
       title: "Product Manager",
       content: "Grateful for my amazing team. Here's to more success ahead!",
-      postImage: "/image/project-image2.jpeg",
+      postImage: "/image/project-image2.webp",
     },
     {
       id: 3,
-      profileImage: "/image/profilePicture.png",
+      profileImage: "/image/profilePicture.webp",
       name: "Emily Brown",
       title: "Designer",
       content: "Check out this new design concept I've been working on.",
-      postImage: "image//project-image3.jpeg",
+      postImage: "image//project-image3.webp",
     },
   ];
 
