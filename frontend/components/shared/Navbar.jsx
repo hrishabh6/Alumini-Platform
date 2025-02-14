@@ -7,7 +7,6 @@ import { logOut } from '@/lib/actions/auth'
 import { NavContents } from '@/constants'
 import Image from 'next/image'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
-import MobileNav from './MobileNav'
 const Navbar = ({ session }) => {
 
     return (

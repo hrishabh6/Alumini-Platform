@@ -14,7 +14,7 @@ const AuthLayout = async ({ children }) => {
             {/* Left Section - Background Image */}
             <section className="hidden lg:relative lg:flex w-1/2">
                 <Image
-                    src="/image/stock-image.jpg"
+                    src="/image/stock-image.webp    "
                     alt="Background"
                     fill
                     className="object-cover"
