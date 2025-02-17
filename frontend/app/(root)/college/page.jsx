@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { MainNav } from "@/components/college/main-nav"
+import { MainNav } from "@/components/college/Main-Nav"
 import { Footer } from "@/components/college/footer"
 
 export default function Page() {

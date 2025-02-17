@@ -10,6 +10,9 @@ import { navigationData } from "@/constants"
 import { useState } from "react"
 import PropTypes from 'prop-types';
 
+console.log("this is recompiling")
+
+
 export function MobileNav({ setMobileMenuOpen }) {
   return (
     <div className="relative">

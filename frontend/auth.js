@@ -27,7 +27,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     GoogleProvider({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
-    }),
+      authorization: {
+          params: {
+              prompt: "select_account",
+              access_type: "offline",
+              response_type: "code"
+          }
+      }
+  }),
     CredentialsProvider({
       name: "credentials",
       credentials: {
@@ -62,10 +69,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
 
   pages: {
-    signIn: "/auth/signin", // Custom sign-in page
-    error: "/auth/error",   // Custom error page
-  },
-
+    signIn: "/auth/signin",
+    error: "/auth/error",
+    
+},
   callbacks: {
     // Handle JWT creation and expiration
     async jwt({ token, user }) {
@@ -96,34 +103,32 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       return session;
     },
     
+    
 
-    // Sign-in callback to handle Google provider users
-    async signIn({ user, account, profile }) {
+  async signIn({ user, account, profile }) {
       await connectToDatabase();
-
+      console.log("SignIn callback called with provider:", account.provider);
       if (account.provider === "google") {
-        let existingUser = await Users.findOne({ email: profile.email });
+          let existingUser = await Users.findOne({ email: profile.email });
 
-        if (!existingUser) {
-          // Create a new user
-          existingUser = await Users.create({
-            email: profile.email,
-            fullName: profile.name,
-            password: null, // No password for Google users
-            profilePicture: profile.picture,
-          });
-        } else {
-          // Update profile picture if changed
-          existingUser.profilePicture = profile.picture;
-          await existingUser.save();
-        }
+          if (!existingUser) {
+              existingUser = await Users.create({
+                  email: profile.email,
+                  fullName: profile.name,
+                  password: null,
+                  profilePicture: profile.picture,
+              });
+          } else {
+              existingUser.profilePicture = profile.picture;
+              await existingUser.save();
+          }
 
-        user.id = existingUser._id.toString();
-        user.fullData = existingUser; // Attach full user data
-        return true;
+          user.id = existingUser._id.toString();
+          user.fullData = existingUser;
       }
-
+      
+      // Always return true to allow sign in
       return true;
-    },
   },
+},
 });

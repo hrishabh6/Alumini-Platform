@@ -50,7 +50,7 @@ export default function JobsPage() {
 
                             <Select>
                                 <SelectTrigger className="h-12 bg-transparent border-gray-700 hover:bg-gray-900 transition-colors">
-                                <div className="flex w-full gap-2">
+                                    <div className="flex w-full gap-2">
                                         <MapPin className="w-5 h-5" />
                                         <SelectValue placeholder="Work location" />
                                     </div>
@@ -64,7 +64,7 @@ export default function JobsPage() {
 
                             <Select>
                                 <SelectTrigger className="h-12 bg-transparent border-gray-700 hover:bg-gray-900 transition-colors">
-                                <div className="flex w-full gap-2">
+                                    <div className="flex w-full gap-2">
                                         <Briefcase className="w-5 h-5" />
                                         <SelectValue placeholder="Experience" />
                                     </div>
@@ -78,7 +78,7 @@ export default function JobsPage() {
 
                             <Select>
                                 <SelectTrigger className="h-12 bg-transparent border-gray-700 hover:bg-gray-900 transition-colors">
-                                <div className="flex w-full gap-2">
+                                    <div className="flex w-full gap-2">
                                         <Calendar className="w-5 h-5" />
                                         <SelectValue placeholder="Per month" />
                                     </div>
@@ -111,19 +111,29 @@ export default function JobsPage() {
             </div>
 
             {/* Mobile Filters Button */}
-            <div className="md:hidden sticky top-0 z-10 bg-black text-white p-4">
-                <Sheet>
-                    <SheetTrigger asChild>
-                        <Button variant="outline" className="w-full">
-                            <SlidersHorizontal className="w-4 h-4 mr-2" />
-                            Filters
-                        </Button>
-                    </SheetTrigger>
-                    <SheetContent side="left" className="w-[300px] bg-white-100">
-                        <SheetTitle className="hidden">Filters</SheetTitle>
-                        <FiltersContent />
-                    </SheetContent>
-                </Sheet>
+            <div className="sticky top-0 z-10 pt-10 bg-white border-b md:hidden">
+                <div className="px-4 py-3 flex items-center justify-between">
+                    <h1 className="text-xl font-semibold text-gray-900">
+                        Recommended Jobs
+                    </h1>
+
+                    <Sheet>
+                        <SheetTrigger asChild>
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                className="flex items-center gap-2 hover:bg-gray-100"
+                            >
+                                <SlidersHorizontal className="w-4 h-4" />
+                                <span className="text-sm">Filters</span>
+                            </Button>
+                        </SheetTrigger>
+                        <SheetContent side="left" className="w-[300px] bg-white">
+                            <SheetTitle>Filters</SheetTitle>
+                            <FiltersContent />
+                        </SheetContent>
+                    </Sheet>
+                </div>
             </div>
 
             {/* Main Content */}

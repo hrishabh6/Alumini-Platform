@@ -10,7 +10,7 @@ export default function LayoutWrapper({ session, children }) {
   return (
     <div className="min-h-screen">
       {shouldShowNavbar && <Navbar session={session} />}
-      <div className={`${shouldShowNavbar ? "pt-[60px]" : ""} w-full`}>
+      <div className={`${shouldShowNavbar ? "pt-[60px] max-xl:pt-[40px]" : ""} w-full`}>
         <div className="max-md:px-0">{children}</div>
       </div>
     </div>

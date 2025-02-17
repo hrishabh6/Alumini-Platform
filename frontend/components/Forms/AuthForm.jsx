@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
@@ -17,23 +17,26 @@ import Link from "next/link";
 import ImageUpload from "../ImageUpload";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { toast } from "@/hooks/use-toast";
 
-const AuthForm = ({ schema, defaultValues, onSubmit, type }) => {
+const AuthForm =  ({ schema, defaultValues, onSubmit, type }) => {
     const router = useRouter();
+    const session =  useSession()
     const isSignIn = type === "SIGN_IN";
     const form = useForm({
         resolver: zodResolver(schema),
         defaultValues: defaultValues,
     });
 
+    
+    
 
     const handleSubmit = async (data) => {
         const result = await onSubmit({ ...data, provider: "credentials" });
         console.log(result);
         if (result.success == true) {
-            router.push("/");
+            router.push("/onboarding");
             toast({
                 description: result.message || "You have successfully signed in",
             });
@@ -48,27 +51,24 @@ const AuthForm = ({ schema, defaultValues, onSubmit, type }) => {
     };
     const handleSubmitForGoogle = async () => {
         try {
-          const result = await signIn("google", {redirect: false});
-          if (result?.error) {
-            toast({
-              title: "Error",
-              description: result.error || "An error occurred",
-              variant: "destructive",
-            });
-          } else {
-            toast({
-              title: "Success",
-              description: "You have successfully signed in with Google",
-            });
-          }
+            const result = await signIn("google", { redirectTo: "/onboarding" });
+    
+            if (result?.error) {
+                toast({
+                    title: "Error",
+                    description: result.error || "An error occurred",
+                    variant: "destructive",
+                });
+            }
         } catch (error) {
-          toast({
-            title: "Error",
-            description: error.message || "An unexpected error occurred",
-            variant: "destructive",
-          });
+            toast({
+                title: "Error",
+                description: error.message || "An unexpected error occurred",
+                variant: "destructive",
+            });
         }
-      };
+    };
+    
 
     return (
         <div className="flex flex-col gap-4">

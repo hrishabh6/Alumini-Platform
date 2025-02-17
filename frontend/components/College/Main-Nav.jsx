@@ -13,6 +13,7 @@ import { Menu} from "lucide-react"
 import {MobileNav} from "./MobileNav"
 import { navigationData } from "@/constants"
 
+console.log("this is recompiling")
 
 export function MainNav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -31,7 +32,7 @@ export function MainNav() {
       
       {/* Desktop Navigation */}
       <div className="hidden md:block">
-        
+      
         <NavigationMenu className="relative">
           <NavigationMenuList className="flex space-x-4">
             {Object.entries(navigationData).map(([key, sections, index]) => (

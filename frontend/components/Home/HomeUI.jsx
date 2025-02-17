@@ -56,7 +56,8 @@ const HomeUI = () => {
               />
               
               {/* Analytics Cards */}
-              <div className="absolute bottom-8 left-[20%] -translate-x-1/2 flex flex-col gap-4">
+              <div className="absolute bottom-8 left-[30%] max-xl:left-1/2 -translate-x-1/2 flex flex-col gap-4">
+
                 <div className="bg-white p-4 rounded-xl shadow-lg w-max min-w-[300px]">
                   <div className="flex justify-between items-center">
                     <div>

@@ -5,9 +5,7 @@ import Image from 'next/image'
 
 const AuthLayout = async ({ children }) => {
     const session = await auth()
-    if (session) {
-        redirect('/')
-    }
+    
     
     return (
         <main className="h-screen w-full flex">
