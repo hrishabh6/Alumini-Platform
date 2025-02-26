@@ -47,7 +47,7 @@ const HomeUI = () => {
           <div className="flex-1 relative max-md:hidden">
             <div className="relative rounded-3xl overflow-hidden">
               <img 
-                src="/image/stockImage.jpeg"
+                src="/image/stockImage.webp"
                 alt="Business professional"
                 className="w-full h-[700px] object-cover"
               />
